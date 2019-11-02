@@ -1,38 +1,69 @@
-import React, { Component } from 'react';
-import { Platform, StyleSheet, Text, View } from 'react-native';
+import React from 'react';
+import DeckList from './components/DeckList';
+import AddDeck from './components/AddDeck';
+import AddQuestion from './components/AddQuestion';
+import Deck from './components/Deck';
+import Quiz from './components/Quiz';
+import { createAppContainer } from 'react-navigation';
+import { createMaterialTopTabNavigator } from 'react-navigation-tabs';
+import { createStackNavigator } from 'react-navigation-stack';
+import { setLocalNotification } from './utils/notification';
 
-const instructions = Platform.select({
-  ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
-  android: 'Double tap R on your keyboard to reload,\n' + 'Shake or press menu button for dev menu',
+const TabNav = createMaterialTopTabNavigator(
+  {
+    ['Decks']: { screen: DeckList },
+    ['Add a Deck']: { screen: AddDeck },
+  },
+  {
+    tabBarOptions: {
+      style: {
+        backgroundColor: '#99465a',
+      },
+    },
+  }
+);
+
+const StackNav = createStackNavigator({
+  Home: {
+    screen: TabNav,
+    navigationOptions: {
+      headerStyle: {
+        backgroundColor: '#99465a',
+        height: 0,
+      },
+    },
+  },
+  Deck: {
+    screen: Deck,
+    navigationOptions: {
+      title: 'Questions Deck',
+      headerStyle: { backgroundColor: '#99465a' },
+    },
+  },
+  AddQuestion: {
+    screen: AddQuestion,
+    navigationOptions: {
+      title: 'New Question',
+      headerStyle: { backgroundColor: '#99465a' },
+    },
+  },
+  Quiz: {
+    screen: Quiz,
+    navigationOptions: {
+      title: 'Quiz',
+      headerStyle: { backgroundColor: '#99465a' },
+    },
+  },
 });
 
-export default class App extends Component {
+const RootTab = createAppContainer(StackNav);
+
+export default class App extends React.Component {
+  componentDidMount() {
+    setLocalNotification();
+  }
+
   render() {
-    return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>Welcome to React Native!</Text>
-        <Text style={styles.instructions}>To get started, edit App.js</Text>
-        <Text style={styles.instructions}>{instructions}</Text>
-      </View>
-    );
+    return <RootTab theme="dark" />;
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-});

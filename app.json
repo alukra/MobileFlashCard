@@ -1,17 +1,28 @@
 {
-  "name": "MobileFlashCards",
-  "displayName": "Mobile Flash Cards",
   "expo": {
-    "name": "MobileFlashCards",
-    "slug": "expo-template-bare",
+    "name": "github.com/alukra/mobileflashcard",
+    "description": "alukra/MobileFlashCard @ Oct 30, 2019",
+    "slug": "snack-f2201eeb-651e-4d9c-822e-15b583f17c3b",
     "privacy": "unlisted",
     "sdkVersion": "35.0.0",
     "version": "1.0.0",
-    "entryPoint": "node_modules/expo/AppEntry.js",
-    "platforms": [
-      "ios",
-      "android",
-      "web"
-    ]
+    "orientation": "portrait",
+    "primaryColor": "#cccccc",
+    "icon": "https://d1wp6m56sqw74a.cloudfront.net/~assets/c9aa1be8a6a6fe81e20c3ac4106a2ebc",
+    "loading": {
+      "icon": "https://d1wp6m56sqw74a.cloudfront.net/~assets/c9aa1be8a6a6fe81e20c3ac4106a2ebc",
+      "hideExponentText": false
+    },
+    "packagerOpts": {
+      "assetExts": [
+        "ttf",
+        "mp4",
+        "otf",
+        "xml"
+      ]
+    },
+    "ios": {
+      "supportsTablet": true
+    }
   }
 }
