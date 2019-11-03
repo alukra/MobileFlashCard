@@ -32,7 +32,7 @@ class DeckListItem extends React.Component {
     const { bounceValue } = this.state;
 
     Animated.sequence([
-      Animated.timing(bounceValue, { duration: 200, toValue: 1.2 }),
+      Animated.timing(bounceValue, { duration: 200, toValue: 20 }),
       Animated.spring(bounceValue, { toValue: 0, friction: 4 })
     ]).start();
 
@@ -46,7 +46,7 @@ class DeckListItem extends React.Component {
     const { bounceValue } = this.state;
     return (
       <TouchableOpacity style={styles.touchable} onPress={this.handlePress}>
-        <Animated.Text style={[styles.title, { transform: [{ rotate: bounceValue }] }]} >
+        <Animated.Text style={[styles.title, { paddingBottom: bounceValue }]}>
           {title}
         </Animated.Text>
         <Animated.Text style={styles.cards}>{cards} cards</Animated.Text>

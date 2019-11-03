@@ -8,16 +8,17 @@ const styles = StyleSheet.create({
     margin: 5,
     color: "#ffffff"
   },
+  textInfo: {
+    fontSize: 8,
+    textAlign: "center",
+    margin: 5,
+    color: "#ffffff"
+  },
   title: {
     fontSize: 20,
     textAlign: "center",
     margin: 5,
     color: "#ff7597"
-  },
-  info: {
-    fontSize: 10,
-    textAlign: "center",
-    color: "#ffffff"
   },
   textContainer: {
     flex: 3,
@@ -50,9 +51,8 @@ export default class FlipCard extends React.Component {
       return (
       <TouchableOpacity style={styles.textContainer} onPress={this.handlePress}>
         <Text style={styles.title}>Is correct the Answer?</Text>
-        <Text style={styles.text}>{data.question}</Text>
         <Text style={styles.text}>{data.answer}</Text>
-        <Text style={styles.info}> Tap to hide the Answer </Text>
+        <Text style={styles.textInfo}> Tap to hide the Answer </Text>
       </TouchableOpacity>
     );
     }
@@ -60,7 +60,7 @@ export default class FlipCard extends React.Component {
       <TouchableOpacity style={styles.textContainer} onPress={this.handlePress}>
         <Text style={styles.title}>Question</Text>
         <Text style={styles.text}>{data.question}</Text>
-        <Text style={styles.info}> Tap to show the Answer </Text>
+        <Text style={styles.textInfo}> Tap to show the Answer </Text>
       </TouchableOpacity>
     );
     
